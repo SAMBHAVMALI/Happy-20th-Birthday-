@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 20th Birthday, My Love!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Floating Background Elements -->
+    <div class="background-effects" id="bg-effects"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Goodbye Teens, Hello 20s! ✨</h1>
+            <p class="fade-in delay-1">Happy 20th Birthday to the most amazing girl in the world.</p>
+            <button class="cta-btn" onclick="scrollToContent()">Scroll to your surprises ↓</button>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="main-content" id="surprises">
+        <h2>20 Things I Love About You & My Favorite Memories ❤️</h2>
+        <p class="subtitle">Click on each number to reveal a little piece of my heart.</p>
+
+        <!-- 20 Interactive Cards Grid -->
+        <div class="grid-container" id="cards-grid">
+            <!-- JavaScript will generate 20 cards here automatically -->
+        </div>
+    </section>
+
+    <!-- Modals for Card Reveals -->
+    <div class="modal" id="message-modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="modal-text">Special message goes here...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
