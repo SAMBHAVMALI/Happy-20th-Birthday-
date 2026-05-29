@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-    --primary: #ff7597;
-    --secondary: #ffb3c6;
-    --dark: #2b1b22;
-    --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+    --primary-blush: #ff8fa3;
+    --dark-rose: #a44a5e;
+    --light-bg: #fff0f3;
+    --text-color: #4a3b3e;
 }
 
 * {
@@ -15,162 +15,292 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: var(--bg-gradient);
-    color: var(--dark);
+    background-color: var(--light-bg);
+    color: var(--text-color);
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
+/* 1. INTRO SCREEN & COUNTDOWN */
+.intro-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     text-align: center;
     padding: 20px;
-    position: relative;
 }
 
-.hero h1 {
+.intro-screen.fade-out {
+    opacity: 0;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+
+.title-glow {
     font-family: 'Dancing Script', cursive;
-    font-size: 4.5rem;
-    color: #cc4466;
+    font-size: 3.5rem;
+    color: var(--dark-rose);
     margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
 }
 
-.cta-btn {
-    background: var(--primary);
+.time-box {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 12px;
+    min-width: 75px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.time-box span {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark-rose);
+    display: block;
+}
+
+.time-box p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #887276;
+}
+
+.countdown-subtext {
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.enter-btn {
+    background-color: var(--primary-blush);
     color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
-    border-radius: 25px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 117, 151, 0.4);
-    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 143, 163, 0.4);
+    transition: all 0.3s ease;
 }
 
-.cta-btn:hover {
-    transform: translateY(-3px);
-    background: #e65c80;
+.enter-btn:hover {
+    transform: scale(1.05);
+    background-color: #ff758f;
 }
 
-/* Grid Layout */
-.main-content {
-    padding: 80px 20px;
+/* MAIN SITE */
+.main-site {
+    opacity: 1;
+    transition: opacity 1s ease;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-site.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.main-header {
     text-align: center;
+    padding: 60px 20px 40px;
 }
 
-.main-content h2 {
+.main-header h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
+    font-size: 4rem;
+    color: var(--dark-rose);
     margin-bottom: 10px;
 }
 
-.subtitle {
-    margin-bottom: 50px;
-    color: #666;
+/* 2. REVEAL BOXES GRID */
+.surprises-section, .memory-lane {
+    margin: 60px 0;
+    text-align: center;
 }
 
-.grid-container {
+.surprises-section h2, .memory-lane h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: var(--dark-rose);
+}
+
+.section-desc {
+    color: #7d666a;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.envelopes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Cards */
-.card {
+.envelope {
     background: white;
     aspect-ratio: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--primary);
     border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px dashed #ffe5ec;
 }
 
-.card:hover {
-    transform: scale(1.08) rotate(3deg);
-    background: var(--primary);
+.envelope .number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-blush);
+}
+
+.envelope .heart-icon {
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px) scale(1.03);
+    background-color: var(--primary-blush);
+    border-color: transparent;
+}
+
+.envelope:hover .number, .envelope:hover .heart-icon {
     color: white;
-    box-shadow: 0 8px 25px rgba(255, 117, 151, 0.3);
 }
 
-/* Modal Styling */
+/* Opened state style change */
+.envelope.opened {
+    background-color: #f7d6dc;
+    border: 2px solid transparent;
+}
+.envelope.opened .number { color: #b57c88; }
+
+/* 3. SMOOTH SCROLLING GALLERY */
+.gallery-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-blush) transparent;
+}
+
+.gallery-item {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    transform: rotate(calc(var(--rotation, 0) * 1deg));
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: var(--dark-rose);
+}
+
+/* FLOATING HEARTS EFFECTS */
+.hearts-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    color: rgba(255, 143, 163, 0.25);
+    font-size: 1.5rem;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* MODAL WINDOW */
 .modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(5px);
+    background: rgba(74, 59, 62, 0.5);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0; pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 10;
+    z-index: 200;
 }
 
-.modal.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+.modal.active { opacity: 1; pointer-events: auto; }
 
 .modal-content {
     background: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
+    padding: 40px 30px;
+    border-radius: 24px;
+    max-width: 450px;
+    width: 85%;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transform: translateY(20px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transform: scale(0.8);
     transition: transform 0.3s ease;
 }
 
-.modal.active .modal-content {
-    transform: translateY(0);
-}
+.modal.active .modal-content { transform: scale(1); }
 
 .close-btn {
     position: absolute;
     top: 15px; right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #aaa;
+    font-size: 1.8rem; cursor: pointer;
+    color: #bbb;
 }
 
-/* Background Floating Hearts */
-.background-effects {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: -1;
+.modal-icon { font-size: 2.5rem; margin-bottom: 15px; }
+
+#modal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-.heart {
-    position: absolute;
-    color: rgba(255, 117, 151, 0.2);
-    font-size: 1.5rem;
-    animation: float up 4s linear infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9rem;
+    color: #9c8286;
 }
