@@ -5,37 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy 20th Birthday, My Love!</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <!-- Floating Background Elements -->
-    <div class="background-effects" id="bg-effects"></div>
+    <div class="hearts-container" id="hearts-bg"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Goodbye Teens, Hello 20s! ✨</h1>
-            <p class="fade-in delay-1">Happy 20th Birthday to the most amazing girl in the world.</p>
-            <button class="cta-btn" onclick="scrollToContent()">Scroll to your surprises ↓</button>
+    <section class="intro-screen" id="intro-screen">
+        <div class="intro-content">
+            <h1 class="title-glow">Leaving the Teens Behind...</h1>
+            <div class="countdown-container">
+                <div class="time-box"><span id="days">00</span><p>Days</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-box"><span id="minutes">00</span><p>Mins</p></div>
+                <div class="time-box"><span id="seconds">00</span><p>Secs</p></div>
+            </div>
+            <p class="countdown-subtext">Until you officially step into your 20s ✨</p>
+            <button class="enter-btn" onclick="enterSite()">Enter Your 20s ❤️</button>
         </div>
     </section>
 
-    <!-- Main Content Section -->
-    <section class="main-content" id="surprises">
-        <h2>20 Things I Love About You & My Favorite Memories ❤️</h2>
-        <p class="subtitle">Click on each number to reveal a little piece of my heart.</p>
+    <div class="main-site hidden" id="main-site">
+        
+        <header class="main-header">
+            <h1>Happy 20th Birthday, Beautiful ✨</h1>
+            <p>Welcome to a whole new chapter. Here is a little piece of my heart for you.</p>
+        </header>
 
-        <!-- 20 Interactive Cards Grid -->
-        <div class="grid-container" id="cards-grid">
-            <!-- JavaScript will generate 20 cards here automatically -->
-        </div>
-    </section>
+        <section class="surprises-section">
+            <h2>20 Reasons & Memories 💌</h2>
+            <p class="section-desc">Click an envelope to open a message</p>
+            <div class="envelopes-grid" id="envelopes-grid">
+                </div>
+        </section>
 
-    <!-- Modals for Card Reveals -->
+        <section class="memory-lane">
+            <h2>Our Memory Lane 📸</h2>
+            <p class="section-desc">A few of my absolute favorite moments with you</p>
+            <div class="gallery-scroll">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/400/500?random=1" alt="Memory 1">
+                    <div class="img-caption">Where it all started...</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/400/500?random=2" alt="Memory 2">
+                    <div class="img-caption">Our favorite date night 🍕</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/400/500?random=3" alt="Memory 3">
+                    <div class="img-caption">That time you made me laugh until it hurt</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/400/500?random=4" alt="Memory 4">
+                    <div class="img-caption">Adventures with my favorite person</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/400/500?random=5" alt="Memory 5">
+                    <div class="img-caption">The sweetest smile in the world</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with all my love, always. Forever & Always. ❤️</p>
+        </footer>
+    </div>
+
     <div class="modal" id="message-modal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <p id="modal-text">Special message goes here...</p>
+            <div class="modal-icon">💌</div>
+            <p id="modal-text">Message goes here...</p>
         </div>
     </div>
 
